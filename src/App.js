@@ -5,24 +5,7 @@ import Form from './Form'
 class App extends Component {
 
 	state = {
-		characters : [
-			// {
-   //              'name': 'Charlie',
-   //              'job': 'Janitor'
-   //          },
-   //          {
-   //              'name': 'Mac',
-   //              'job': 'Bouncer'
-   //          },
-   //          {
-   //              'name': 'Dee',
-   //              'job': 'Aspring actress'
-   //          },
-   //          {
-   //              'name': 'Dennis',
-   //              'job': 'Bartender'
-   //          }
-		]
+		characters : []
 	};
 
 	removeCharacter = index => {
@@ -34,6 +17,10 @@ class App extends Component {
 	        })
 	    });
 	}
+
+  handleSubmit = character => {
+    this.setState({characters: [...this.state.characters, character]});
+  }
 
 	render() {
 		// const name = 'Igor Ventorim';
@@ -58,14 +45,17 @@ class App extends Component {
 		// ];
 
 		return (
-			<div className="container">
+			      <div className="container">
                 <Table 
                 	characterData={this.state.characters}
                 	removeCharacter={this.removeCharacter}
             	/>
-
-            	<Form />
+              <br/><br/>
+            	<Form handleSubmit={this.handleSubmit}/>
+              <br/><br/>
             </div>
+
+
 		);
 	}
 }
